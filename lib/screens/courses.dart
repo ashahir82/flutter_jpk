@@ -1,4 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:myfirstflutterporject/network/api.dart';
+
+import '../model/pelajar.dart';
 
 class Courses extends StatefulWidget {
   const Courses({super.key});
@@ -20,6 +25,16 @@ class _CoursesState extends State<Courses> {
     {'Kursus 9': 'Kursus 9 subtitle'},
     {'Kursus 10': 'Kursus 10 subtitle'},
   ];
+
+  List<Pelajar>? pelajar;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    loadPelajar();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,5 +73,14 @@ class _CoursesState extends State<Courses> {
         itemCount: courses.length,
       ),
     );
+  }
+
+  void loadPelajar() async {
+    String url = 'khalifah/peserta';
+
+    var res = await Network().getData(url);
+    var body = json.decode(res.body);
+
+    print(body);
   }
 }
