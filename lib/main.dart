@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myfirstflutterporject/screens/courses.dart';
 import 'package:myfirstflutterporject/screens/profile.dart';
 
 void main() {
@@ -77,9 +78,8 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context, 
-                  MaterialPageRoute(builder: (context) => const Profile())
-                );
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Profile()));
               },
               child: const Text('Profile'),
             ),
@@ -87,7 +87,10 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 10,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Courses()));
+              },
               child: const Text('Senarai Kursus'),
             )
           ],
