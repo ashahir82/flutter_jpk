@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:myfirstflutterporject/network/api.dart';
-
-import '../model/pelajar.dart';
+import 'package:myfirstflutterporject/screens/coursedetail.dart';
+import 'package:myfirstflutterporject/model/pelajar.dart';
 
 class Courses extends StatefulWidget {
   const Courses({super.key});
@@ -76,6 +76,15 @@ class _CoursesState extends State<Courses> {
                   trailing: const Icon(
                     Icons.arrow_forward_ios,
                   ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            Coursedetail(pelajar: pelajar[index]),
+                      ),
+                    );
+                  },
                 );
               },
               itemCount: pelajar.length,
