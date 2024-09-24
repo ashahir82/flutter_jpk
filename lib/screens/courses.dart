@@ -26,7 +26,7 @@ class _CoursesState extends State<Courses> {
     {'Kursus 10': 'Kursus 10 subtitle'},
   ];
 
-  List<Pelajar>? pelajar;
+  List<Pelajar> pelajar = [];
 
   @override
   void initState() {
@@ -44,34 +44,38 @@ class _CoursesState extends State<Courses> {
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Theme.of(context).colorScheme.onPrimary,
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          return ListTile(
-            tileColor: Colors.orange.shade200,
-            iconColor: Colors.blue,
-            title: Text(
-              courses[index].keys.first,
+      body: pelajar.isNotEmpty
+          ? ListView.builder(
+              itemBuilder: (context, index) {
+                return ListTile(
+                  tileColor: Colors.orange.shade200,
+                  iconColor: Colors.blue,
+                  title: Text(
+                    pelajar[index].name ?? '-',
+                  ),
+                  titleTextStyle: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  subtitle: Text(pelajar[index].gender ?? '-'),
+                  subtitleTextStyle: const TextStyle(
+                    color: Colors.grey,
+                    fontStyle: FontStyle.italic,
+                  ),
+                  leading: const Icon(
+                    Icons.book,
+                    size: 40,
+                  ),
+                  trailing: const Icon(
+                    Icons.arrow_forward_ios,
+                  ),
+                );
+              },
+              itemCount: pelajar.length,
+            )
+          : const Center(
+              child: CircularProgressIndicator(),
             ),
-            titleTextStyle: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-            subtitle: Text(courses[index].values.first),
-            subtitleTextStyle: const TextStyle(
-              color: Colors.grey,
-              fontStyle: FontStyle.italic,
-            ),
-            leading: const Icon(
-              Icons.book,
-              size: 40,
-            ),
-            trailing: const Icon(
-              Icons.arrow_forward_ios,
-            ),
-          );
-        },
-        itemCount: courses.length,
-      ),
     );
   }
 
@@ -81,6 +85,8 @@ class _CoursesState extends State<Courses> {
     var res = await Network().getData(url);
     var body = json.decode(res.body);
 
-    print(body);
+    pelajar = (body as List).map((e) => Pelajar.fromJson(e)).toList();
+
+    setState(() {});
   }
 }
