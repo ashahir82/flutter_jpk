@@ -62,10 +62,17 @@ class _CoursesState extends State<Courses> {
                     color: Colors.grey,
                     fontStyle: FontStyle.italic,
                   ),
-                  leading: const Icon(
-                    Icons.book,
-                    size: 40,
-                  ),
+                  leading: pelajar[index].statusHadir == 1
+                      ? const Icon(
+                          Icons.check_circle_outline,
+                          size: 40,
+                          color: Colors.green,
+                        )
+                      : const Icon(
+                          Icons.cancel_outlined,
+                          size: 40,
+                          color: Colors.red,
+                        ),
                   trailing: const Icon(
                     Icons.arrow_forward_ios,
                   ),
