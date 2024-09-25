@@ -3,9 +3,9 @@ import 'package:myfirstflutterporject/model/pelajar.dart';
 import 'package:myfirstflutterporject/widget/customtile.dart';
 
 class Coursedetail extends StatelessWidget {
-  Pelajar pelajar;
+  final Pelajar pelajar;
 
-  Coursedetail({required this.pelajar, super.key});
+  const Coursedetail({required this.pelajar, super.key});
 
   @override
   Widget build(BuildContext context) {

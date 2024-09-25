@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Customtile extends StatelessWidget {
-  Customtile({required this.title, required this.value, super.key});
-  String title;
-  String value;
+  final String title;
+  final String value;
+  const Customtile({required this.title, required this.value, super.key});
 
   @override
   Widget build(BuildContext context) {
