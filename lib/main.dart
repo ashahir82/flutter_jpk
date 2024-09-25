@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myfirstflutterporject/screens/courses.dart';
+import 'package:myfirstflutterporject/screens/login.dart';
 import 'package:myfirstflutterporject/screens/profile.dart';
 
 void main() {
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Login(),
     );
   }
 }
